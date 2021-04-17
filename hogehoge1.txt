@@ -1,2 +1,3 @@
 This is a hogehoge.txt.
 add line...
+忘れねばこそ、思い出さず候
