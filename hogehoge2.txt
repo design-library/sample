@@ -1,0 +1,3 @@
+This is hogehoge2.txt .
+This text is on feature-3 branch.
+git add .
