@@ -1,86 +1,86 @@
 
-# �V�X�e�� /etc/gitconfig
+# システム /etc/gitconfig
 git config --system -l
 
-# ���[�U���� ~/.gitconfig
+# ユーザごと ~/.gitconfig
 git config --global -l
 
-# �v���W�F�N�g���� .git/config
+# プロジェクトごと .git/config
 git config -l
 
-# ��̃��|�W�g���쐬(.git)
+# 空のリポジトリ作成(.git)
 git init
 
-# �J�����g�f�B���N�g����ΏۂɁA�ύX�A�폜�A�V�K�̃t�@�C���̑S�Ă��X�e�[�W���O����
+# カレントディレクトリを対象に、変更、削除、新規のファイルの全てをステージングする
 git add .
 
-# ���|�W�g���S�̂�ΏۂɁA�ύX�A�폜�̃t�@�C���̑S�Ă��X�e�[�W���O����
+# リポジトリ全体を対象に、変更、削除のファイルの全てをステージングする
 # git add --update
 git add -u
 
-# ���|�W�g���S�̂�ΏۂɁA�ύX�A�폜�A�V�K�̃t�@�C���̑S�Ă��X�e�[�W���O����
+# リポジトリ全体を対象に、変更、削除、新規のファイルの全てをステージングする
 # git add --all
 git add -A
 
-# git add �ɂ��X�e�[�W���O���ꂽ�t�@�C�����R�~�b�g����
-# �G�f�B�^�������オ��R�����g����͂���
-# �R�~�b�g�𒆎~����ꍇ�́A�G�f�B�^�̃R�����g���폜���ۑ�����
+# git add によりステージングされたファイルをコミットする
+# エディタが立ち上がりコメントを入力する
+# コミットを中止する場合は、エディタのコメントを削除し保存する
 git commit
 
-# git add �ɂ��X�e�[�W���O���ꂽ�t�@�C�����R�����g�t���ŃR�~�b�g����
-git commit -m "�R�����g"
+# git add によりステージングされたファイルをコメント付きでコミットする
+git commit -m "コメント"
 
-# ��ƃc���[�ƃX�e�[�W�̍���
+# 作業ツリーとステージの差異
 git diff
 
-# �X�e�[�W��HEAD�̍���
+# ステージとHEADの差異
 git diff --staged
 
-# ��ƃc���[��HEAD�̍���
+# 作業ツリーとHEADの差異
 git diff HEAD
 
-# �R�~�b�g�Ԃ̍���
+# コミット間の差異
 git diff <commit_a> <commit_b>
 git diff <commit_a> HEAD
 git diff HEAD^ HEAD
 git diff HEAD~1 HEAD
 
-# �R�~�b�g�Ԃ̃t�@�C���̍���
+# コミット間のファイルの差異
 git diff <commit_a> <commit_b> -- <file_name>
 
-# �X�e�[�W���O�������ނ��Ȃ��������Ƃɂ���
-# HEAD�̓��e���X�e�[�W���O�ɃR�s�[����
+# ステージングした資材をなかったことにする
+# HEADの内容をステージングにコピーする
 git reset
 git reset -- <file_name>
 
-# ��ƃc���[�̎��ނ��Ȃ��������Ƃɂ���
-# HEAD�̓��e����ƃc���[�ɃR�s�[����
+# 作業ツリーの資材をなかったことにする
+# HEADの内容を作業ツリーにコピーする
 git reset --hard
 
-# �t�@�C�����̕ύX
+# ファイル名の変更
 git mv <org_file_name> <file_name>
 
-# �t�@�C����f�B���N�g�����X�e�[�W�����菜��
+# ファイルやディレクトリをステージから取り除く
 git rm <file_name>
 git rm -r <directory_name>
 
-# �t�@�C����f�B���N�g�����X�e�[�W����̂ݎ�菜���A��ƃc���[�̂��͎̂�菜���Ȃ�
+# ファイルやディレクトリをステージからのみ取り除き、作業ツリーのものは取り除かない
 git rm --cache <file_name>
 git rm -r --cache <directory_name>
 
-# �X�e�[�W�̏�Ԃ�\������
+# ステージの状態を表示する
 git ls-files
 
-# �R�~�b�g����`�F�b�N�A�E�g����
-# HEAD�̏�Ԃ͕ς��Ȃ�
-# �X�e�[�W���o�R���č�ƃc���[�Ƀ`�F�b�N�A�E�g�����
+# コミットからチェックアウトする
+# HEADの状態は変わらない
+# ステージを経由して作業ツリーにチェックアウトされる
 git checkout <commit_id> -- <file_name>
 
-# �����̐�[(HEAD)���ړ�����
-# �I�v�V�����Ȃ�  �X�e�[�W�̓��e�͎w�肵���R�~�b�g�̓��e�ŏ㏑���A��ƃc���[�͂��̂܂�
+# 履歴の先端(HEAD)を移動する
+# オプションなし  ステージの内容は指定したコミットの内容で上書き、作業ツリーはそのまま
 git reset <commit_id>
-# �I�v�V������--hard  �X�e�[�W�A��ƃc���[�̓��e�͎w�肵���R�~�b�g�̓��e�ŏ㏑��
+# オプションは--hard  ステージ、作業ツリーの内容は指定したコミットの内容で上書き
 git reset --hard <commit_id>
-# �X�e�[�W�A��ƃc���[�����e�����̂܂�
+# ステージ、作業ツリーも内容をそのまま
 git reset --soft <commit_id>
 
