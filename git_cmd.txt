@@ -1,0 +1,86 @@
+
+# システム /etc/gitconfig
+git config --system -l
+
+# ユーザごと ~/.gitconfig
+git config --global -l
+
+# プロジェクトごと .git/config
+git config -l
+
+# 空のリポジトリ作成(.git)
+git init
+
+# カレントディレクトリを対象に、変更、削除、新規のファイルの全てをステージングする
+git add .
+
+# リポジトリ全体を対象に、変更、削除のファイルの全てをステージングする
+# git add --update
+git add -u
+
+# リポジトリ全体を対象に、変更、削除、新規のファイルの全てをステージングする
+# git add --all
+git add -A
+
+# git add によりステージングされたファイルをコミットする
+# エディタが立ち上がりコメントを入力する
+# コミットを中止する場合は、エディタのコメントを削除し保存する
+git commit
+
+# git add によりステージングされたファイルをコメント付きでコミットする
+git commit -m "コメント"
+
+# 作業ツリーとステージの差異
+git diff
+
+# ステージとHEADの差異
+git diff --staged
+
+# 作業ツリーとHEADの差異
+git diff HEAD
+
+# コミット間の差異
+git diff <commit_a> <commit_b>
+git diff <commit_a> HEAD
+git diff HEAD^ HEAD
+git diff HEAD~1 HEAD
+
+# コミット間のファイルの差異
+git diff <commit_a> <commit_b> -- <file_name>
+
+# ステージングした資材をなかったことにする
+# HEADの内容をステージングにコピーする
+git reset
+git reset -- <file_name>
+
+# 作業ツリーの資材をなかったことにする
+# HEADの内容を作業ツリーにコピーする
+git reset --hard
+
+# ファイル名の変更
+git mv <org_file_name> <file_name>
+
+# ファイルやディレクトリをステージから取り除く
+git rm <file_name>
+git rm -r <directory_name>
+
+# ファイルやディレクトリをステージからのみ取り除き、作業ツリーのものは取り除かない
+git rm --cache <file_name>
+git rm -r --cache <directory_name>
+
+# ステージの状態を表示する
+git ls-files
+
+# コミットからチェックアウトする
+# HEADの状態は変わらない
+# ステージを経由して作業ツリーにチェックアウトされる
+git checkout <commit_id> -- <file_name>
+
+# 履歴の先端(HEAD)を移動する
+# オプションなし  ステージの内容は指定したコミットの内容で上書き、作業ツリーはそのまま
+git reset <commit_id>
+# オプションは--hard  ステージ、作業ツリーの内容は指定したコミットの内容で上書き
+git reset --hard <commit_id>
+# ステージ、作業ツリーも内容をそのまま
+git reset --soft <commit_id>
+
