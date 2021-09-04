@@ -84,3 +84,7 @@ git reset --hard <commit_id>
 # ステージ、作業ツリーも内容をそのまま
 git reset --soft <commit_id>
 
+# HEADが指すコミットをやり直す
+# コミットコメントのやり直し
+git commit --amend
+
